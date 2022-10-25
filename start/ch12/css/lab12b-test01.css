@@ -1,0 +1,103 @@
+:root {
+  --box-head-color: #429fca;
+  --box-text-color: #f8f9f8;
+  --box-foot-color: #eb4839;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Background Photo by Cédric Dhaenens on Unsplash 
+   https://unsplash.com/photos/Zz_3R91RQyo   */
+body {
+    font-family: 'Open Sans', Helvetica, sans-serif;  
+    background-image: url('../images/cedric-dhaenens-674712-unsplash.jpg')
+}
+
+
+/* mobile size first */
+.grid-container {
+  width: 95%;
+  margin: 3em 0 0 3em;
+  
+      display: grid;
+      grid-template-columns: 1fr ;
+      grid-row-gap: 20px;
+      grid-column-gap: 5%;
+      text-align: center;
+}
+
+/* then desktop/tablet size */
+@media only screen and (min-width: 850px) {
+    .grid-container {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }    
+}
+
+
+.box {
+  border-radius: 5px;
+  box-shadow: 1px 2px 10px 0px rgba(0, 0, 0, 0.3);  
+  color: var(--box-text-color);
+  background-color:var(--box-foot-color);
+  max-width: 300px;
+}
+
+
+.weather {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+.weather img {
+    width: 300px;
+    height: 240px;    
+    display: block;
+
+}
+.weather div {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);  
+    box-align: center;
+    align-items: center;
+    justify-content: center;
+    
+    opacity: 0.7;
+}
+.weather h2 {
+    font-size: 6rem;
+    font-weight: 800;
+}
+.weather p {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+
+.box section {
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;    
+    grid-column-gap: 3px;
+      
+}
+
+.box h1 {
+    font-size: 2rem;
+    padding: 0.5rem;
+    text-align: center;
+    background-color:var(--box-head-color);
+}
+.box section h3 {
+  font-size: 1rem;
+}
+.box section div {
+  align-self: center;
+  justify-self: center;
+}
