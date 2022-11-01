@@ -61,3 +61,56 @@
 
 
 }
+
+form{
+   
+   box-shadow: 5px 5px 5px 1px var(--color-neutral-400);
+   padding: 25px;
+   border-radius: 4px;
+   color: var(--color-neutral-700);
+   font-size: 14px;
+}
+input, label, button{
+  
+   display: block;
+}
+input{
+   padding: 0px 5px ;
+   display: inline-block;
+   border: 1px solid var(--color-neutral-100) ;
+   margin-bottom: 14px;
+   height: 40px;
+   width: 80%;
+   border-radius: 5px;
+}
+
+label{
+   display: block;
+   
+   margin-bottom: 5px;
+}
+
+button{
+ color: white;
+ background-color: var(--color-primary-1-500);  
+ border: 0px;
+ border-radius: 5px;
+ width: 150px;
+ height: 40px;
+ margin-top: 20px;
+}
+
+.errorForm input{
+   border-color: red;
+}
+
+.errorForm p {
+   font-style: italic;
+   font-size: 12px;
+   margin-top: 1px;color: red;
+}
+
+#err{
+   
+   margin-bottom: 0px;
+}
