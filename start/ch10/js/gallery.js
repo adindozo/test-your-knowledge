@@ -1,5 +1,16 @@
 // add class definition here (must be before you use it)
-
+class GalleryItem{
+   constructor(id, name){
+      this.name = name;
+      this.id = id;
+   }
+   render(){
+      let li = document.createElement('li');
+      li.textContent=this.name;
+      li.dataset.id=this.id;
+      return li;
+   }
+}
 
 // sample data using your class
 const galleries = [
@@ -13,3 +24,9 @@ const galleries = [
 ];
 
 // add module code here
+
+function getSampleGalleries(){
+   return galleries;
+}
+
+export {GalleryItem, getSampleGalleries};

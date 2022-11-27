@@ -32,14 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
             let thumbSrcArray = e.target.src.split('/');
             mainimg.src = thumbSrcArray[thumbSrcArray.length - 3] + '/medium/' + thumbSrcArray[thumbSrcArray.length - 1];
-            let figcaptionAlt = document.querySelector('#imgManipulated figcaption em');
-            let figcaptionTitle = document.querySelector('#imgManipulated figcaption span');
-            let figcaptionAlttext = document.createTextNode(e.target.alt);
-            let figcaptionTitletext = document.createTextNode(e.target.title);
-            figcaptionAlt.textContent = '';
-            figcaptionTitle.textContent = '';
-            figcaptionAlt.appendChild(figcaptionAlttext);
-            figcaptionTitle.appendChild(figcaptionTitletext);
+            document.querySelector('#imgManipulated figcaption em').textContent=e.target.alt;
+            document.querySelector('#imgManipulated figcaption span').textContent=e.target.title;
+            
 
         }
 
