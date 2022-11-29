@@ -62,7 +62,11 @@ select {
 }
 
 
-
+img{
+  width: 150px;
+  height: 150px;
+  background-color: gray;
+}
 
 /* CSS Loader source: https://loading.io/css/ */
 

@@ -5,12 +5,12 @@ document.addEventListener("DOMContentLoaded", function () {
    l1.style.display='none';
    l2.style.display='none';
    filters.style.display='none';
-   const countryAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/travel/countries.php';
-   const cityAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/travel/cities.php';
-   const continentAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/travel/continents.php';
-   const userAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/travel/users.php';
-   const photoAPI = 'https://www.randyconnolly.com/funwebdev/3rd/api/travel/images.php';
-   const imageURL = 'https://www.randyconnolly.com/funwebdev/3rd/images/travel/square150/';
+   const countryAPI = 'http://www.randyconnolly.com/funwebdev/3rd/api/travel/countries.php';
+   const cityAPI = 'http://www.randyconnolly.com/funwebdev/3rd/api/travel/cities.php';
+   const continentAPI = 'http://www.randyconnolly.com/funwebdev/3rd/api/travel/continents.php';
+   const userAPI = 'http://www.randyconnolly.com/funwebdev/3rd/api/travel/users.php';
+   const photoAPI = 'http://www.randyconnolly.com/funwebdev/3rd/api/travel/images.php';
+   const imageURL = 'http://www.randyconnolly.com/funwebdev/3rd/images/travel/square150/';
    let getPromises = function () {
       try {
          let countries = fetch(countryAPI).then( response => response.json() );
