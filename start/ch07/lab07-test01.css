@@ -49,3 +49,43 @@ input[type="submit"] {
 /* add your styles below */
 
 /* the filename for the background image is images/P6120375.jpg  */
+
+body{
+    background-image: url('images/P6120375.jpg');
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+form{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+
+}
+
+input[type="search"] {
+    flex-basis: 36em;
+}
+
+input[type="submit"] {
+    flex-basis: 10em;
+}
+
+label{
+    flex-basis: 16em;
+}

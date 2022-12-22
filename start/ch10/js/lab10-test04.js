@@ -1,3 +1,41 @@
+
+let timesVisited = localStorage.getItem('timesVisited');
+
+if (navigator.geolocation) {
+   navigator.geolocation.getCurrentPosition(haveLocation,
+   geoError);
+  } else {
+   // geolocation not supported or accepted
+   console.log('user didnt allow')
+  }
+  function haveLocation(position) {
+   const latitude = position.coords.latitude;
+   const longitude = position.coords.longitude;
+   const altitude = position.coords.altitude;
+   const accuracy = position.coords.accuracy;
+   // now do something with this information
+   console.log(latitude);
+   console.log(longitude);
+   console.log(altitude);
+   console.log(accuracy)
+  }
+  function geoError(error) { console.log('error') }
+
+if(!timesVisited)timesVisited=1;
+console.log(timesVisited)
+timesVisited=parseInt(timesVisited);
+timesVisited++;
+
+localStorage.setItem('timesVisited',timesVisited); 
+console.log(typeof timesVisited)
+
+
+let voices = speechSynthesis.getVoices();
+let utterance = new SpeechSynthesisUtterance('Hello world');
+utterance.voice = voices[3];
+utterance.rate = 1.5;
+utterance.pitch = 1.3;
+speechSynthesis.speak(utterance);
 document.addEventListener("DOMContentLoaded", function () {
    let l1=document.getElementById('loader1');
    let l2=document.getElementById('loader2');
@@ -68,8 +106,13 @@ document.addEventListener("DOMContentLoaded", function () {
       filters.style.display='block';
    }
    document.getElementById('fetchButton').addEventListener('click',() => {
-      l1.style.display='block';
-      filters.style.display='none';
+      let voices = speechSynthesis.getVoices();
+      console.log(voices);
+let utterance = new SpeechSynthesisUtterance('ching chong');
+utterance.voice = voices[20];
+
+
+speechSynthesis.speak(utterance);
       useData();
    })
    // document.getElementById('filters').addEventListener('change',(e) => {
