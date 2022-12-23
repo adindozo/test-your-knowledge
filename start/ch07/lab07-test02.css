@@ -104,3 +104,25 @@ main h3 {
 
 /* add styles here */
 
+.container {
+    display: grid;
+    grid-template-columns: minmax(80px,200px) minmax(80px,200px) auto;
+    gap: 0px;
+    height: 100vh;
+}
+
+.theme ul{
+    display: grid;
+    grid-template-columns: 250px 250px;
+    gap: 10px;
+    
+}
+
+.theme li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 500;
+    font-size: 22px;
+}
