@@ -89,3 +89,13 @@ input[type="submit"] {
 label{
     flex-basis: 16em;
 }
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(250px, 251px));
+}
+
+g{
+    background-color: #DA127D;
+    min-height: 200px;
+}

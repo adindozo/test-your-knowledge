@@ -1,0 +1,26 @@
+.grid {
+    gap: 5px;
+    display: grid;
+    grid-template-columns: repeat(3,250px);
+}
+
+.g{  
+    
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 50px;
+    color: wheat;
+    background-color: #DA127D;
+    min-height: 200px;
+}
+
+.g3{
+    
+}
+
+.g4{
+    grid-column: span 2;
+    grid-row: span 2;
+}
