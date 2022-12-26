@@ -126,11 +126,3 @@ main h3 {
     font-weight: 500;
     font-size: 22px;
 }
-header{
-    background-color: teal;
-    min-height: 200px;
-   
-    
-    grid-column: span 2;
-    
-}
