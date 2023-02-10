@@ -1,54 +1,151 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Chapter 11</title>
     <link href="lab11a-test01.css" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap"
+        rel="stylesheet">
+
     <!--The React JS libraries -->
     <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
     <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
     <!--Initially, we will use the babel run-time library to convert JSX in the browser -->
-    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>    
-    
-    
-<script type="text/babel">
-
-const App = () => {
-
-   //later you will learn how to fetch this data from an API 
-   const data = [
-      {id: "016060", title: "Girl Arranging Her Hair", artist: "Mary Cassatt",  year: 1886},      
-      {id: "019160", title: "Farmhouse in Provence", artist: "Vincent Van Gogh", year: 1888},  
-      {id: "016070", title: "The Boating Party", artist: "Mary Cassatt",  year: 1893},
-      {id: "017040", title: "Woman with a Parasol", artist: "Claude Monet",  year: 1875},
-      {id: "017080", title: "The Bridge at Argenteuil", artist: "Claude Monet", year: 1874}
-   ];
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
 
 
+    <script type="text/babel">
 
-   return (
-      <article className="app">
-         Add your header here
-         <div className="box">
-            Add your other components inside here
-         </div>
-      </article>
-   );
-      
-}
+        const App = () => {
+            const data = [
+                { id: "016060", title: "Girl Arranging Her Hair", artist: "Mary Cassatt", year: 1886 },
+                { id: "019160", title: "Farmhouse in Provence", artist: "Vincent Van Gogh", year: 1888 },
+                { id: "016070", title: "The Boating Party", artist: "Mary Cassatt", year: 1893 },
+                { id: "017040", title: "Woman with a Parasol", artist: "Claude Monet", year: 1875 },
+                { id: "017080", title: "The Bridge at Argenteuil", artist: "Claude Monet", year: 1874 }
+            ];
+
+            //later you will learn how to fetch this data from an API 
+            const [currentPainting, setCurrentPainting] = React.useState(data[0]);
+            const [paintings, setPaintings] = React.useState(data);
+            let i = 0;
+            // setInterval(()=>{
+            //     setCurrentPainting('data[i]');
+            //     setCurrentPainting('data[is]');
+            //     i=i+1;
+            //     console.log(currentPainting)
+
+            // },1000)
+
+            let changePainting = (p) => {
+                setCurrentPainting(p);
 
 
-    
-ReactDOM.render(<App />, document.querySelector('#react-container')); 
-  
-</script> 
-        
-        
-  </head>
-  <body>
-    <div id='react-container' ></div>
-  </body>
+            }
+            let updatePainting = (painting) => {
+                let paintings_arr = [...paintings];
+                for (let i = 0; i < paintings_arr.length; i++) {
+                    if (paintings_arr[i].id == painting.id) paintings_arr[i] = painting;
+                }
+                // console.log(paintings_arr);
+
+                setPaintings(paintings_arr);
+            }
+
+            let undoChanges = () =>{
+                setPaintings(data);
+            }
+
+            return (
+                <article className="app">
+                    <Header undo={undoChanges}/>
+                    <div className="box">
+                        <PaintingList paintings={paintings} current={currentPainting} change={changePainting}></PaintingList>
+                        <EditPaintingForm current={currentPainting} update={updatePainting}></EditPaintingForm>
+                    </div>
+                </article>
+            );
+
+        }
+        const Header = (props) => {
+            return (<header>
+                <h1>Test Your Knowledge #1</h1>
+                <button onClick={(e)=>{
+                    props.undo();
+                }}>Undo Edits</button>
+            </header>)
+        }
+
+        const PaintingList = (props) => {
+            let paintings = props.paintings;
+
+            return (
+                <section className="paintingList">
+                    {paintings.map((p, i) => <PaintingListItem key={p.id} painting={p} change={props.change} current={props.current}></PaintingListItem>)}
+                </section>
+            )
+        }
+
+        const EditPaintingForm = (props) => {
+
+            const [paintingobjForm, setpaintingobjForm] = React.useState(props.current);
+
+            let paintingobj = props.current;
+            let handleChange = (e) => {
+                
+                if (e.target.name == 'title') paintingobj.title = e.target.value;
+                if (e.target.name == 'artist') paintingobj.artist = e.target.value;
+                if (e.target.name == 'year') paintingobj.year = e.target.value;
+                // console.log(paintingobj);
+                props.update(paintingobj);
+            }
+
+            return (
+                <section className="paintingForm">
+                    <img src={'paintings/' + paintingobj.id + '.jpg'} alt={paintingobj.title} />
+                    <div>
+                        <label>Title</label><input type="text" name="title" value={paintingobj.title} onChange={handleChange} />
+                    </div>
+                    <div
+                    ><label>Artist</label><input type="text" name="artist" value={paintingobj.artist} onChange={handleChange} />
+                    </div>
+                    <div>
+                        <label>Year</label><input type="text" name="year" value={paintingobj.year} onChange={handleChange} />
+                    </div>
+                </section>
+            )
+        }
+
+        const PaintingListItem = (props) => {
+            const paintingobj = props.painting;
+            const [selected, setSelected] = React.useState(props.selected);
+
+            return (
+                <div className={(paintingobj.id == props.current.id) ? 'row invert' : 'row'} onClick={(e) => {
+                    props.change(paintingobj);
+                    // setSelected(1); selected ? 'row invert' : 
+                }}>
+                    <img src={'paintings/square/' + paintingobj.id + '.jpg'} alt={paintingobj.title} />
+                    <h3>{paintingobj.title}</h3>
+                    <p>{paintingobj.artist}</p>
+                    <p>{paintingobj.year}</p>
+                </div>
+            )
+        }
+
+
+
+        ReactDOM.render(<App />, document.querySelector('#react-container'));
+
+    </script>
+
+
+</head>
+
+<body>
+    <div id='react-container'></div>
+</body>
+
 </html>
