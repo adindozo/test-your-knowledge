@@ -3,6 +3,7 @@
 
 const PhotoThumb = (props) => {
     let { photo } = props;
+
     return (
         <div className="photoBox" onClick={()=>{
             props.showImageDetails(photo.id);
