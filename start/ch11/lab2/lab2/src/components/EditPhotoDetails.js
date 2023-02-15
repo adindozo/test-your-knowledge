@@ -3,6 +3,7 @@
 
 
 function EditPhotoDetails(props) {
+    if(!props.currentPhoto) return
     if(!props.currentPhoto.location) return
     let {currentPhoto} = props;
     let {title, location} = currentPhoto;
@@ -16,11 +17,11 @@ function EditPhotoDetails(props) {
                     <legend>Edit Photo Details</legend>
                     <img src={`http://www.randyconnolly.com/funwebdev/3rd/images/travel/medium640/${currentPhoto.filename}`} alt={currentPhoto.title} />
                     <label>Title</label>
-                    <input type="text" name="title" value={title} onChange={(e)=>props.updatePhoto(e,currentPhoto.id)}/>
+                    <input type="text" name="title" value={title} onChange={(e)=>{props.updatePhoto(e,currentPhoto.id);props.updateCurrentPhoto(e)}}/>
                     <label>City</label>
-                    <input type="text" name="city" value={city} onChange={(e)=>props.updatePhoto(e,currentPhoto.id)}/>
+                    <input type="text" name="city" value={city} onChange={(e)=>{props.updatePhoto(e,currentPhoto.id);props.updateCurrentPhoto(e)}}/>
                     <label>Country</label>
-                    <input type="text" name="country" value={country} onChange={(e)=>props.updatePhoto(e,currentPhoto.id)}/>
+                    <input type="text" name="country" value={country} onChange={(e)=>{props.updatePhoto(e,currentPhoto.id);props.updateCurrentPhoto(e)}}/>
                 </form>
             </div>
         </article>
