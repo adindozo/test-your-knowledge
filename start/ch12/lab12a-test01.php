@@ -29,7 +29,7 @@
    <br/>
    <?= $medium ?>
    <br/>
-   <?= $era ?>
+   <?= $era ?> 
    <br/>
    </p>
 </div>
