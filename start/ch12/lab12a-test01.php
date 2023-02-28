@@ -21,13 +21,15 @@
    $dimensions = $width . "cm x " . $height . "cm";      
 ?> 
 
-<img src="images/???.jpg"  />
+<img src="images/<?= $thumbnail ?>"  />
 <div>
-   <h1> </h1>
-   <h2>By  </h2>
-   <p>
+   <h1> <?= $title ?> (<?= $year ?>) </h1>
+   <h2>By  <?= $artist ?></h2>
+   <p> <?= $width ?>cm x <?= $height ?>cm
    <br/>
+   <?= $medium ?>
    <br/>
+   <?= $era ?>
    <br/>
    </p>
 </div>
